@@ -33,22 +33,29 @@ function countriesLogic(countries){
     Array.from(countryListItems).map(item => item.remove())
   }
 
-  const markup = countries
-    .map(item => `<li class="list-item new"><img class="list-item__img" src=${item.flags.png} alt=${item.name.common}/><span>${item.name.official}</span></li>`)
-    .join("");
-
   if(countries.length > 10){
     Notiflix.Notify.info("Too many matches found. Please enter a more specific name.")
 
   } else if(countries.length <= 10 && countries.length >= 2){
 
     console.log("<= 10 && countries.length >= 2)")
+    const markup = countries
+      .map(item => `<li class="list-item new"><img class="list-item__img" src=${item.flags.png} alt=${item.name.common}/><span>${item.name.official}</span></li>`)
+      .join("");
 
     countryListTitle.insertAdjacentHTML("beforeend", markup);
 
   } else {
+    const langsSingle = countries[0].languages
+    const langsArray = Object.values(langsSingle).join(", ")
     console.log("=1")
-
+    const markupSingle = countries
+      .map(item => `<li class="list-item new"><img class="list-item__img" src=${item.flags.png} alt=${item.name.common}/><span class='nameOff'>${item.name.official}</span></li>
+                  <li class="list-item new"><span class='list-item__span'>Capital:</span>${item.capital}</li>
+                  <li class="list-item new"><span class='list-item__span'>Population:</span>${item.population}</li>
+                  <li class="list-item new"><span class='list-item__span'>Languages:</span>${langsArray}</li>`)
+      .join("");
+    countryListTitle.insertAdjacentHTML("beforeend", markupSingle);
   }
 
 }

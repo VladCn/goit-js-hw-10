@@ -18,13 +18,28 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+.country-list{
+  padding-left: 0;
+}
 .list-item {
   list-style-type: none;
   font-size: 20px;
+  display: flex;
+  align-items: center;
 
 }
 .list-item__img {
   margin-right: 10px;
+  margin-bottom: 16px;
   width: 30px;
-  height: 20px;
+  height: auto;
+}
+.nameOff {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+.list-item__span{
+  margin-right: 10px;
+  font-weight: bold;
 }
