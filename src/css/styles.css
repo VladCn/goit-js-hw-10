@@ -26,11 +26,11 @@ body {
   font-size: 20px;
   display: flex;
   align-items: center;
+  margin-bottom: 16px;
 
 }
 .list-item__img {
   margin-right: 10px;
-  margin-bottom: 16px;
   width: 30px;
   height: auto;
 }
@@ -38,7 +38,6 @@ body {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 16px;
 }
 .list-item__span{
   margin-right: 10px;
