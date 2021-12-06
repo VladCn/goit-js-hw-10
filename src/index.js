@@ -1,9 +1,8 @@
 import './css/styles.css';
 import{fetchCountries} from './fetchCountries.js';
-import{countryList} from './countryList.js';
 import debounce from 'lodash/debounce';
 import Notiflix from 'notiflix';
-import { value } from 'lodash/seq';
+
 
 const inputJS = document.querySelector("#search-box")
 const countryListTitle= document.querySelector(".country-list")
