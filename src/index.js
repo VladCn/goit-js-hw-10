@@ -5,18 +5,15 @@ import Notiflix from 'notiflix';
 
 
 const inputJS = document.querySelector("#search-box")
-const countryListTitle= document.querySelector(".country-list")
+const countryList= document.querySelector(".country-list")
 const DEBOUNCE_DELAY = 300;
 
 const inputHandler = (event) => {
   const trimSt = event.target.value.trim()
   if(!trimSt.length){
-    const countryListItems = document.querySelectorAll(".list-item");
-
-    Array.from(countryListItems).map(item => item.remove())
     return
   }
-
+  countryList.innerHTML = "";
   fetchCountries(trimSt)
   .then((countries) => countriesLogic(countries))
   .catch((error) => console.log(error));
@@ -26,11 +23,10 @@ const inputHandler = (event) => {
 inputJS.addEventListener("input", debounce(inputHandler, DEBOUNCE_DELAY))
 
 function countriesLogic(countries){
-  const countryListItems = document.querySelectorAll(".list-item")
-
-  if(countryListItems.length){
-    Array.from(countryListItems).map(item => item.remove())
+  if(!countries){
+    return
   }
+
 
   if(countries.length > 10){
     Notiflix.Notify.info("Too many matches found. Please enter a more specific name.")
@@ -42,7 +38,7 @@ function countriesLogic(countries){
       .map(item => `<li class="list-item new"><img class="list-item__img" src=${item.flags.png} alt=${item.name.common}/><span>${item.name.official}</span></li>`)
       .join("");
 
-    countryListTitle.insertAdjacentHTML("beforeend", markup);
+    countryList.insertAdjacentHTML("beforeend", markup);
 
   } else {
     const langsSingle = countries[0].languages
@@ -54,7 +50,7 @@ function countriesLogic(countries){
                   <li class="list-item new"><span class='list-item__span'>Population:</span>${item.population}</li>
                   <li class="list-item new"><span class='list-item__span'>Languages:</span>${langsArray}</li>`)
       .join("");
-    countryListTitle.insertAdjacentHTML("beforeend", markupSingle);
+    countryList.insertAdjacentHTML("beforeend", markupSingle);
   }
 
 }
