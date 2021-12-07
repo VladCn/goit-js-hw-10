@@ -6,7 +6,7 @@
   "homepage": "https://github.com/VladCn/goit-js-hw-10.git",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /VladCn/goit-js-hw-10/"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-10/"
   },
   "repository": {
     "type": "git",
